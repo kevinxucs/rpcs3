@@ -10,6 +10,7 @@
 #include <QKeyEvent>
 #include <QMessageBox>
 #include <string>
+#include <iostream>
 
 #include "png.h"
 
@@ -291,7 +292,9 @@ int gs_frame::client_width()
 		return rect.right - rect.left;
 	}
 #endif // _WIN32
-	return width() * devicePixelRatio();
+	int w = width() * devicePixelRatio();
+	std::cout << "client_width(ratio=" << devicePixelRatio() << ") " << w << std::endl;
+	return w;
 }
 
 int gs_frame::client_height()
@@ -303,7 +306,9 @@ int gs_frame::client_height()
 		return rect.bottom - rect.top;
 	}
 #endif // _WIN32
-	return height() * devicePixelRatio();
+	int h = height() * devicePixelRatio();
+ std::cout << "client_height(ratio=" << devicePixelRatio() << ") " << h << std::endl;
+	return h;
 }
 
 void gs_frame::flip(draw_context_t, bool /*skip_frame*/)
